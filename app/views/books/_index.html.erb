@@ -19,6 +19,7 @@
         <td id="book_<%= book.id %>">
         <%= render 'books/favorites', book: book, user: current_user  %>
         </td>
+        <td>コメント数：<%= book.book_comments.count %></td>
       </tr>
     <% end %>
   </tbody>
