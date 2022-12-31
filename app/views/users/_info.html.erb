@@ -10,14 +10,18 @@
   </tr>
   <tr>
   <th>follows</th>
-  <th><%= user.followings.count %></th>
-  </tr>
- <tr>
-  <th>followers<th>
-  <th><%= user.followers.count %></th>
-  </tr>
+	<th><%= link_to user.followings.count, user_followings_path(user) %></th>
+	</tr>
+
+	<tr>
+	<th>followers</th>
+	<th><%= link_to user.followers.count, user_followers_path(user) %></th>
 </table>
-　
+
+　<div class="row">
+	<%= render 'relationships/followbutan', user: user %>
+</div>
+
 <div class='row'>
   <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block" do %>
     <i class="fas fa-user-cog"></i>
