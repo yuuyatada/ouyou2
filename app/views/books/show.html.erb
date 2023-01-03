@@ -11,7 +11,7 @@
     <div class='col-md-8 offset-md-1'>
   		<h2>Book detail</h2>
   		<table class='table'>
-  		  <tr>
+  		  <tr id="book_<%= @book.id %>">
           <td><%= link_to(@book.user) do %>
             <%= image_tag @book.user.get_profile_image, size:"100x100" %><br>
             <%= @book.user.name %>
@@ -32,7 +32,13 @@
              
         </tr>
       </table>
-      　<div id="comments-area"><%= render "book_comments/comment",book: @book,book_comment: @book_comment %></div>
+      
+      　<div id="comments-area"><%= render "book_comments/comment",book: @book%></div>
+      　
+      　<%= form_with model:[@book,@book_comment] do |f| %>
+        <%= f.text_area :comment, size:"90x5" %>
+        <%= f.submit '送信'%>
+      <% end %>
     </div>
   </div>
 </div>
